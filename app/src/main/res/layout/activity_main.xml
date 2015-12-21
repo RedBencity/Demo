@@ -1,0 +1,60 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
+
+    <!-- <include layout="@layout/topbar" /> -->
+
+    <com.example.ben.demo.weight.TopBar
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#e34e53"
+        custom:leftBackground="#223344"
+        custom:leftText="Back"
+        custom:leftTextColor="#FFFFFF"
+        custom:rightBackground="#223344"
+        custom:rightText="More"
+        custom:rightTextColor="#FFFFFF"
+        custom:titleTop="自定义标题"
+        custom:titleTopTextColor="#123412"
+        custom:titleTextSize="10sp"/>
+<TextView
+    android:id="@+id/aaa"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_below="@id/topBar"
+    android:text="aaa"/>
+
+    <com.example.ben.demo.weight.AlignTextView
+        android:id="@+id/bbb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@id/aaa"
+
+        android:textSize="15sp"
+        android:textColor="#ffffff"
+        android:background="#822222"/>
+    <TextView
+        android:id="@+id/ccc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@id/bbb"
+        android:text="String aa = 北京时间12月5日凌晨4点(当地时间14日晚间20点)，2015-16赛季英超第16轮一场焦点战，切尔西做客皇权球场挑战莱斯特城。上半场马赫雷斯助攻瓦尔迪破门，阿扎尔伤退，切尔西0-1落后；下半场马赫雷斯的进球为莱斯特城扩大领先优势，雷米替补上阵攻入一球，切尔西客场1-2不敌莱斯特城，遭遇英超2连败；莱斯特城回到联赛第1位。"
+    />
+</RelativeLayout>
+
+</ScrollView>
