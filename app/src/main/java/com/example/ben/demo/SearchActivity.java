@@ -50,7 +50,6 @@ public class SearchActivity extends Activity {
         recordList = new ArrayList<String>();
         preferences = getSharedPreferences("search_record", MODE_PRIVATE);
         editor = preferences.edit();
-
     }
 
     private void getData() {
