@@ -32,6 +32,7 @@ public class SearchActivity extends Activity {
     private List<String> recordList;
     private List<TextView> textViews;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
