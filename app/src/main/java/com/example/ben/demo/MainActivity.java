@@ -1,47 +1,111 @@
 package com.example.ben.demo;
 
 import android.app.Activity;
-import android.graphics.Paint;
-import android.os.Parcelable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.ben.demo.weight.AlignTextView;
-
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-
-public class MainActivity extends Activity {
-    private TextView textView;
-    private AlignTextView alignTextView;
+public class MainActivity extends Activity implements View.OnClickListener {
+    private ImageView icon_home_practice, icon_home_discovery, icon_home_misc;
+    private TextView home_practice, home_discovery, home_misc;
+    private RelativeLayout one,two,three;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = (TextView) findViewById(R.id.aaa);
-        alignTextView =(AlignTextView)findViewById(R.id.bbb);
-        String aa = "北京时间12月5日凌晨4点(当地时间14日晚间20点)，2015-16赛季英超第16轮一场焦点战，切尔西做客皇权球场挑战莱斯特城。上半场马赫雷斯助攻瓦尔迪破门，阿扎尔伤退，切尔西0-1落后；下半场马赫雷斯的进球为莱斯特城扩大领先优势，雷米替补上阵攻入一球，切尔西客场1-2不敌莱斯特城，遭遇英超2连败；莱斯特城回到联赛第1位。";
-        String bb = "活到老a，学到老。人生犹如一大课堂，社会就是知识的海洋 ，有学不完的知识，用不完的智慧。所以，人一辈子都要做学生，活到老，学到老；向书本学，向他人学；从实践中学，从社会中学；学知识，学做人。毛泽东曾经说过，他一日不学习，赶不上少奇同志。古人云，不进则退！每个人都要有危机感，时刻保 持进取心。如果不思进取，就随时被淘汰的可能。如果放松学习，不充实自己的头脑，就会变得空虚无聊，人生的质量就要打折扣。";
-        try {
-            textView.setText(bb);
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-        alignTextView.setText(aa );
+        initView();
     }
 
+    private void initView() {
+        icon_home_practice = (ImageView) findViewById(R.id.icon_home_practice);
+        icon_home_discovery = (ImageView) findViewById(R.id.icon_home_discovery);
+        icon_home_misc = (ImageView) findViewById(R.id.icon_home_misc);
+        home_practice = (TextView) findViewById(R.id.home_practice);
+        home_discovery = (TextView) findViewById(R.id.home_discovery);
+        home_misc = (TextView) findViewById(R.id.home_misc);
+        one = (RelativeLayout)findViewById(R.id.one);
+        two = (RelativeLayout)findViewById(R.id.two);
+        three = (RelativeLayout)findViewById(R.id.three);
+        one.setOnClickListener(this);
+        two.setOnClickListener(this);
+        three.setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.one:
+                setChoiceItem(0);
+                break;
+            case R.id.two:
+                setChoiceItem(1);
+                break;
+            case R.id.three:
+                setChoiceItem(2);
+                break;
+        }
+    }
 
+    private void setChoiceItem(int index) {
+        clearChoice();
+        switch (index) {
+            case 0:
+                home_practice.setTextColor(getResources().getColor(R.color.theme_color));
+                icon_home_practice.setImageResource(R.mipmap.icon_home_practice_checked);
+                break;
+            case 1:
+                home_discovery.setTextColor(getResources().getColor(R.color.theme_color));
+                icon_home_discovery.setImageResource(R.mipmap.icon_home_discovery_checked);
+                break;
+            case 2:
+                home_misc.setTextColor(getResources().getColor(R.color.theme_color));
+                icon_home_misc.setImageResource(R.mipmap.icon_home_misc_checked);
+                break;
+        }
+    }
+
+    private void clearChoice() {
+        home_practice.setTextColor(getResources().getColor(R.color.gray));
+        icon_home_practice.setImageResource(R.mipmap.icon_home_practice);
+
+        home_discovery.setTextColor(getResources().getColor(R.color.gray));
+        icon_home_discovery.setImageResource(R.mipmap.icon_home_discovery);
+
+        home_misc.setTextColor(getResources().getColor(R.color.gray));
+        icon_home_misc.setImageResource(R.mipmap.icon_home_misc);
+    }
+
+    long mMillis;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (System.currentTimeMillis() - mMillis > 2000) {
+                mMillis = System.currentTimeMillis();
+                Toast.makeText(MainActivity.this, "再次点击返回键，将退出程序",
+                        Toast.LENGTH_SHORT).show();
+                return false;
+            } else {
+                try {
+                    android.os.Process.killProcess(android.os.Process.myPid());
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                    Log.e("cbjtnews", e.toString());
+                }
+                return true;
+            }
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
+    }
 }
