@@ -1,7 +1,6 @@
 package com.example.ben.demo;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;

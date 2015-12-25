@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.ben.demo.QuestionActivity">
+
+    <com.example.ben.demo.weight.TopBar
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#e34e53"
+        custom:leftBackground="#223344"
+        custom:leftText="Back"
+        custom:leftTextColor="#FFFFFF"
+        custom:rightBackground="#223344"
+        custom:rightText="More"
+        custom:rightTextColor="#FFFFFF"
+        custom:titleTextSize="10sp"
+        custom:titleTop="自定义标题"
+        custom:titleTopTextColor="#123412" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topBar">
+    </android.support.v4.view.ViewPager>
+</RelativeLayout>
