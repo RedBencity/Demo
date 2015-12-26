@@ -36,8 +36,8 @@ public class QuestionActivity extends Activity {
     private void getData(){
         for (int i=0;i<10;i++){
             View view = LayoutInflater.from(this).inflate(R.layout.question,null);
-            TextView textView = (TextView)view.findViewById(R.id.textview);
-            textView.setText(i+"");
+            TextView textView = (TextView)view.findViewById(R.id.question_position);
+            textView.setText(i+1+"");
             pageViews.add(view);
         }
         viewPager.setAdapter(new QuestionAdapter());
